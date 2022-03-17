@@ -11,4 +11,25 @@ describe('backend-hand-of-resources routes', () => {
   afterAll(() => {
     pool.end();
   });
+
+it('creates a dog', async() => {
+  const expected = {
+    name: 'Momo',
+    age: 1,
+    favoriteTreat: 'Beef Jerky'
+  }
+
+  const res = await request(app)
+  .post('/api/v1/dogs')
+  .send(expected);
+
+  expect(res.body).toEqual({ 
+    id: expect.any(String),
+    ...expected 
+  });
+});
+
+
+
+
 });
