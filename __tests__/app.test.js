@@ -38,5 +38,12 @@ it('returns an array of dogs', async() => {
   expect(res.body).toEqual(expected)
 })
 
+it('returns a single dog by Id', async() => {
+  const expected = await Dog.getById(1);
+  const res = await request(app)
+  .get(`/api/v1/dogs/${expected.id}`);
+
+  expect(res.body).toEqual(expected)
+})
 
 });
