@@ -3,6 +3,8 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const Dog = require('../lib/models/Dog');
+const { getAll } = require('../lib/models/Dog');
+const Song = require('../lib/models/Song');
 
 describe('backend-hand-of-resources routes', () => {
   beforeEach(() => {
@@ -116,5 +118,12 @@ describe('backend-hand-of-resources routes', () => {
     });
   });
 
-  
+  it('returns an array of songs', async() => {
+    const expected = await Song.getAll();
+    const response = await request(app)
+      .get('/api/v1/songs');
+
+    expect(response.body).toEqual(expected);
+  });
+
 });
