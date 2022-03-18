@@ -13,7 +13,7 @@ describe('backend-hand-of-resources routes', () => {
     pool.end();
   });
 
-it('creates a dog', async() => {
+it('creates an instance of Dog to dogs table', async() => {
   const expected = {
     name: 'Momo',
     age: 1,
@@ -45,5 +45,22 @@ it('returns a single dog by Id', async() => {
 
   expect(res.body).toEqual(expected)
 })
+
+it('deletes a dog by Id', async() => {
+  // Creates a new dog in DB
+  const newDog = await Dog.insert({ 
+    name: 'Chomp',
+    age: 5,
+    favoriteTreat: 'Rawhide'
+  })
+  // Get the new dog as the expected
+  const expected = await Dog.getById(newDog.id);
+  // Delete the dog that was just inserted
+  const res = await request(app)
+  .delete(`/api/v1/dogs/${expected.id}`);
+  
+  expect(res.body).toEqual(expected)
+});
+
 
 });
