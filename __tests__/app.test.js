@@ -62,5 +62,40 @@ it('deletes a dog by Id', async() => {
   expect(res.body).toEqual(expected)
 });
 
+it('updates a dog by id', async() => {
+  const expected = {
+    id: expect.any(String),
+    name: 'Gus',
+    age: 4,
+    favoriteTreat: 'Chicken Strips'
+  }
 
+  const res = await request(app)
+  .patch(`/api/v1/dogs/1`)
+  .send({ age: 4 });
+
+  expect(res.body).toEqual(expected);
+
+
+  // Alternative syntax when there isn't hardcoded values in SQL.
+  // Insert a new instance first in order to make changes.
+  
+  // const dog = await Dog.insert({
+  //   name: 'Momo',
+  //   age: 6,
+  //   favoriteTreat: 'Beef Jerky'
+  // });
+
+  // const res = await request(app)
+  // .patch(`/api/v1/dogs/${dog.id}`)
+  // .send({ age: 7 });
+
+  // const expected = { 
+  //   id: expect.any(String),
+  //   ...dog,
+  //   age: 7
+  // };
+
+  // expect(res.body).toEqual(expected);
+})
 });
