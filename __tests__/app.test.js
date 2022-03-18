@@ -11,9 +11,9 @@ describe('backend-hand-of-resources routes', () => {
 
   afterAll(() => {
     pool.end();
-  });
+  })
 
-it('creates an instance of Dog to dogs table', async() => {
+.skip('creates an instance of Dog to dogs table', async() => {
   const expected = {
     name: 'Momo',
     age: 1,
@@ -28,9 +28,9 @@ it('creates an instance of Dog to dogs table', async() => {
     id: expect.any(String),
     ...expected 
   });
-});
+})
 
-it('returns an array of dogs', async() => {
+.skip('returns an array of dogs', async() => {
   const expected = await Dog.getAll();
   const res = await request(app)
   .get('/api/v1/dogs');
@@ -38,7 +38,7 @@ it('returns an array of dogs', async() => {
   expect(res.body).toEqual(expected)
 })
 
-it('returns a single dog by Id', async() => {
+.skip('returns a single dog by Id', async() => {
   const expected = await Dog.getById(1);
   const res = await request(app)
   .get(`/api/v1/dogs/${expected.id}`);
@@ -46,7 +46,7 @@ it('returns a single dog by Id', async() => {
   expect(res.body).toEqual(expected)
 })
 
-it('deletes a dog by Id', async() => {
+.skip('deletes a dog by Id', async() => {
   // Creates a new dog in DB
   const newDog = await Dog.insert({ 
     name: 'Chomp',
@@ -60,9 +60,9 @@ it('deletes a dog by Id', async() => {
   .delete(`/api/v1/dogs/${expected.id}`);
   
   expect(res.body).toEqual(expected)
-});
+})
 
-it('updates a dog by id', async() => {
+.skip('updates a dog by id', async() => {
   const expected = {
     id: expect.any(String),
     name: 'Gus',
@@ -79,7 +79,7 @@ it('updates a dog by id', async() => {
 
   // Alternative syntax when there isn't hardcoded values in SQL.
   // Insert a new instance first in order to make changes.
-  
+
   // const dog = await Dog.insert({
   //   name: 'Momo',
   //   age: 6,
@@ -98,4 +98,5 @@ it('updates a dog by id', async() => {
 
   // expect(res.body).toEqual(expected);
 })
+
 });
