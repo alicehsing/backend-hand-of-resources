@@ -99,4 +99,10 @@ describe('backend-hand-of-resources routes', () => {
   // expect(res.body).toEqual(expected);
 })
 
+it('creates an instance of song to songs table', async() => {
+  const expected = {
+    
+  }
+})
+
 });
