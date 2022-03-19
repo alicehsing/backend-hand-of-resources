@@ -152,7 +152,18 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
+  it('deletes a song by id', async() => {
+    const newSong = await Song.insert({ 
+      title: 'Hot Tears',
+      artist: 'Leif Vollebekk',
+      album: 'New Ways'
+    });
+    const expected = await Song.getById(newSong.id);
+    const response = await request(app)
+      .delete(`/api/v1/songs/${expected.id}`);
 
+    expect(response.body).toEqual(expected);
+  });
   
 
 });
