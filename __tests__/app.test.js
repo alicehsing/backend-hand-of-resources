@@ -143,7 +143,7 @@ describe('backend-hand-of-resources routes', () => {
     };
     
     const response = await request(app)
-      .put('/api/v1/songs/1')
+      .patch('/api/v1/songs/1')
       .send({ 
         artist: 'Richard Marx and Donna Lewis',
         album: 'Anastasia'
@@ -153,5 +153,6 @@ describe('backend-hand-of-resources routes', () => {
   });
 
 
+  
 
 });
