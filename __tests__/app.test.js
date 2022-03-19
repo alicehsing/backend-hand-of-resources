@@ -126,4 +126,13 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
+  it('returns a single song by Id', async() => {
+    const expected = await Song.getById(1);
+    const response = await request(app)
+      .get(`/api/v1/songs/${expected.id}`);
+
+    expect(response.body).toEqual(expected);
+  });
+
+  
 });
