@@ -134,5 +134,24 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
-  
+  it('updates a song by id', async() => {
+    const expected = {
+      id: expect.any(String),
+      title: 'At the Beginning',
+      artist: 'Richard Marx and Donna Lewis',
+      album: 'Anastasia'
+    };
+    
+    const response = await request(app)
+      .put('/api/v1/songs/1')
+      .send({ 
+        artist: 'Richard Marx and Donna Lewis',
+        album: 'Anastasia'
+      });
+
+    expect(response.body).toEqual(expected);
+  });
+
+
+
 });
