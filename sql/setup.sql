@@ -29,3 +29,16 @@ INSERT INTO
 VALUES
     ('At the Beginning', 'Evynne Hollens and Peter Hollens', 'Single'),
     ('Believer', 'Imagine Dragons', 'Evolve')
+
+CREATE TABLE books (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title TEXT NOT NULL,
+    author TEXT NOT NULL,
+    publisher TEXT NOT NULL
+);
+
+INSERT INTO
+    books (title, author, publisher)
+VALUES
+    ('Full', 'Julia Styro', 'Lake Union Publishing'),
+    ('The Judge''s List', 'John Grisham', ' Doubleday')

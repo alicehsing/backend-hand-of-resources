@@ -101,7 +101,7 @@ describe('backend-hand-of-resources routes', () => {
     // expect(res.body).toEqual(expected);
   });
 
-  it('creates an instance of song to songs table', async() => {
+  it.skip('creates an instance of song to songs table', async() => {
     const expected = {
       title: 'In My Blood',
       artist: 'Shawn Mendes',
@@ -118,7 +118,7 @@ describe('backend-hand-of-resources routes', () => {
     });
   });
 
-  it('returns an array of songs', async() => {
+  it.skip('returns an array of songs', async() => {
     const expected = await Song.getAll();
     const response = await request(app)
       .get('/api/v1/songs');
@@ -126,7 +126,7 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('returns a single song by Id', async() => {
+  it.skip('returns a single song by Id', async() => {
     const expected = await Song.getById(1);
     const response = await request(app)
       .get(`/api/v1/songs/${expected.id}`);
@@ -134,7 +134,7 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('updates a song by id', async() => {
+  it.skip('updates a song by id', async() => {
     const expected = {
       id: expect.any(String),
       title: 'At the Beginning',
@@ -152,7 +152,7 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('deletes a song by id', async() => {
+  it.skip('deletes a song by id', async() => {
     const newSong = await Song.insert({ 
       title: 'Hot Tears',
       artist: 'Leif Vollebekk',
@@ -165,5 +165,5 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
   
-
 });
+
