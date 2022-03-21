@@ -167,3 +167,20 @@ describe('backend-hand-of-resources routes', () => {
   
 });
 
+
+it('creates an instance of book to books table', async() => {
+  const expected = {
+    title: 'Give unto Others',
+    author: 'Donna Leon',
+    publisher: 'Atlantic Monthly Press'
+  };
+
+  const response = await request(app)
+    .post('/api/v1/books')
+    .send(expected);
+  
+  expect(response.body).toEqual({
+    id: expect.any(String),
+    ...expected
+  });
+});
