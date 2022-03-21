@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS dogs;
 DROP TABLE IF EXISTS songs;
+DROP TABLE IF EXISTS books;
 
 CREATE TABLE dogs (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -28,7 +29,7 @@ INSERT INTO
     songs (title, artist, album)
 VALUES
     ('At the Beginning', 'Evynne Hollens and Peter Hollens', 'Single'),
-    ('Believer', 'Imagine Dragons', 'Evolve')
+    ('Believer', 'Imagine Dragons', 'Evolve');
 
 CREATE TABLE books (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -41,4 +42,4 @@ INSERT INTO
     books (title, author, publisher)
 VALUES
     ('Full', 'Julia Styro', 'Lake Union Publishing'),
-    ('The Judge''s List', 'John Grisham', ' Doubleday')
+    ('The Judge''s List', 'John Grisham', ' Doubleday');
