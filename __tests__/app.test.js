@@ -332,7 +332,7 @@ describe('backend-hand-of-resources routes', () => {
   });
 
   it('returns a single candy by Id', async() => {
-    const expected = await getById(1);
+    const expected = await Candy.getById(1);
     const response = await request(app)
       .get(`/api/v1/candies/${expected.id}`);
 
