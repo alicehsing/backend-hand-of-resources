@@ -342,7 +342,7 @@ describe('backend-hand-of-resources routes', () => {
   it('updates a candy by id', async() => {
     const expected = {
       id: expect.any(String),
-      name: 'Kit-Kat',
+      name: 'Gummy Bears',
       type: 'gummies',
       texture: 'chewy',
       sugarLevel: 2
