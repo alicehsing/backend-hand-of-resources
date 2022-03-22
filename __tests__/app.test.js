@@ -199,6 +199,23 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
+  it('updates a book by id', async() => {
+    const expected = {
+      id: expect.any(String),
+      title: 'Full',
+      author: 'Julia STYRO',
+      publisher: 'Lake Union Publishing'
+    };
+
+    const response = await request(app)
+      .patch('/api/v1/books/1')
+      .send({ author: 'Julia STYRO' });
+
+    expect(response.body).toEqual(expected);
+  });
+
+
+
 
 
 });
