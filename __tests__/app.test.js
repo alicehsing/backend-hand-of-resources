@@ -191,6 +191,16 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
+  it('returns a single book by Id', async() => {
+    const expected = await Book.getById(1);
+    const response = await request(app)
+      .get(`/api/v1/books/${expected.id}`);
+
+    expect(response.body).toEqual(expected);
+  });
+
+
+
 });
 
 
