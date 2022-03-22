@@ -166,30 +166,33 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
   
-});
-
-
-it('creates an instance of book to books table', async() => {
-  const expected = {
-    title: 'Give unto Others',
-    author: 'Donna Leon',
-    publisher: 'Atlantic Monthly Press'
-  };
-
-  const response = await request(app)
-    .post('/api/v1/books')
-    .send(expected);
+  it('creates an instance of book to books table', async() => {
+    const expected = {
+      title: 'Give unto Others',
+      author: 'Donna Leon',
+      publisher: 'Atlantic Monthly Press'
+    };
   
-  expect(response.body).toEqual({
-    id: expect.any(String),
-    ...expected
+    const response = await request(app)
+      .post('/api/v1/books')
+      .send(expected);
+    
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      ...expected
+    });
   });
+  
+  it('returns an array of books', async() => {
+    const expected = await Book.getAll();
+    const response = await request(app)
+      .get('/api/v1/books');
+  
+    expect(response.body).toEqual(expected);
+  });
+
 });
 
-it('returns an array of books', async() => {
-  const expected = await Book.getAll();
-  const response = await request(app)
-    .get('/api/v1/books');
 
-  expect(response.body).toEqual(expected);
-});
+
+
