@@ -17,6 +17,8 @@ describe('backend-hand-of-resources routes', () => {
     pool.end();
   });
 
+  // Tests for /api/v1/dogs
+
   it.skip('creates an instance of Dog to dogs table', async() => {
     const expected = {
       name: 'Momo',
@@ -103,6 +105,8 @@ describe('backend-hand-of-resources routes', () => {
     // expect(res.body).toEqual(expected);
   });
 
+
+  // Tests for /api/v1/songs
   it.skip('creates an instance of song to songs table', async() => {
     const expected = {
       title: 'In My Blood',
@@ -166,8 +170,10 @@ describe('backend-hand-of-resources routes', () => {
 
     expect(response.body).toEqual(expected);
   });
+
+  // Tests for /api/v1/books
   
-  it('creates an instance of book to books table', async() => {
+  it.skip('creates an instance of book to books table', async() => {
     const expected = {
       title: 'Give unto Others',
       author: 'Donna Leon',
@@ -184,7 +190,7 @@ describe('backend-hand-of-resources routes', () => {
     });
   });
   
-  it('returns an array of books', async() => {
+  it.skip('returns an array of books', async() => {
     const expected = await Book.getAll();
     const response = await request(app)
       .get('/api/v1/books');
@@ -192,7 +198,7 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('returns a single book by Id', async() => {
+  it.skip('returns a single book by Id', async() => {
     const expected = await Book.getById(1);
     const response = await request(app)
       .get(`/api/v1/books/${expected.id}`);
@@ -200,7 +206,7 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('updates a book by id', async() => {
+  it.skip('updates a book by id', async() => {
     const expected = {
       id: expect.any(String),
       title: 'Full',
@@ -215,7 +221,7 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
-  it('deletes a book by id', async() => {
+  it.skip('deletes a book by id', async() => {
     const newBook = await Book.insert({
       title: 'Eat, Pray, Love',
       author: 'Elizabeth Gilbert',
@@ -229,7 +235,23 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
-
+  // Tests for /api/v1/movies
+  it('creates an instance of movie to movies table', async() => {
+    const expected = {
+      title: 'The Longest Yard',
+      director: 'Peter Segal',
+      yearReleased: 2005
+    };
+  
+    const response = await request(app)
+      .post('/api/v1/movies')
+      .send(expected);
+    
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      ...expected
+    });
+  });
 
 
 });
