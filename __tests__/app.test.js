@@ -322,8 +322,13 @@ describe('backend-hand-of-resources routes', () => {
     });
   });
 
+  it('returns an array of candies', async() => {
+    const expected = await Candy.getAll();
+    const response = await request(app)
+      .get('/api/v1/candies');
 
-
+    expect(response.body).toEqual(expected);
+  });
 
 });
 
