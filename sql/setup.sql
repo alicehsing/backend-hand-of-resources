@@ -50,11 +50,11 @@ CREATE TABLE movies (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT NOT NULL,
     director TEXT NOT NULL,
-    year_published INT NOT NULL
+    year_released INT NOT NULL
 );
 
 INSERT INTO
-    movies (title, director, year_published)
+    movies (title, director, year_released)
 VALUES
     ('The Godfather', 'Francis Ford Coppola', 1972),
     ('The Skeleton Key', 'Iain Softley', 2005);
