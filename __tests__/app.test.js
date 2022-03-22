@@ -339,6 +339,21 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
+  it('updates a candy by id', async() => {
+    const expected = {
+      id: expect.any(String),
+      name: 'Kit-Kat',
+      type: 'gummies',
+      texture: 'chewy',
+      sugarLevel: 2
+    };
+
+    const response = await request(app)
+      .patch('/api/v1/candies/1')
+      .send({ sugarLevel: 2 });
+
+    expect(response.body).toEqual(expected);
+  });
 });
 
 
