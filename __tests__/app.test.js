@@ -288,7 +288,19 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
+  it('deletes a movie by id', async() => {
+    const newMovie = await Movie.insert({
+      title: 'Ip Man',
+      director: 'Wilson Yip',
+      yearReleased: 2008
+    });
 
+    const expected = await Movie.getById(newMovie.id);
+    const response = await request(app)
+      .delete(`/api/v1/movies/${expected.id}`);
+    
+    expect(response.body).toEqual(expected);
+  });
 });
 
 
