@@ -6,6 +6,7 @@ const Dog = require('../lib/models/Dog');
 const { getAll } = require('../lib/models/Dog');
 const Song = require('../lib/models/Song');
 const Book = require('../lib/models/Book');
+const Movie = require('../lib/models/Movie');
 const res = require('express/lib/response');
 
 describe('backend-hand-of-resources routes', () => {
@@ -253,6 +254,13 @@ describe('backend-hand-of-resources routes', () => {
     });
   });
 
+  it('returns an array of movies', async() => {
+    const expected = await Movie.getAll();
+    const response = await request(app)
+      .get('/api/v1/movies');
+
+    expect(response.body).toEqual(expected);
+  });
 
 });
 
