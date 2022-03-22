@@ -8,6 +8,7 @@ const Song = require('../lib/models/Song');
 const Book = require('../lib/models/Book');
 const Movie = require('../lib/models/Movie');
 const Candy = require('../lib/models/Candy');
+const { getById } = require('../lib/models/Dog');
 // const res = require('express/lib/response');
 
 describe('backend-hand-of-resources routes', () => {
@@ -326,6 +327,14 @@ describe('backend-hand-of-resources routes', () => {
     const expected = await Candy.getAll();
     const response = await request(app)
       .get('/api/v1/candies');
+
+    expect(response.body).toEqual(expected);
+  });
+
+  it('returns a single candy by Id', async() => {
+    const expected = await getById(1);
+    const response = await request(app)
+      .get(`/api/v1/candies/${expected.id}`);
 
     expect(response.body).toEqual(expected);
   });
