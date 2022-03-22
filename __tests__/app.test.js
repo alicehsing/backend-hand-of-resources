@@ -5,6 +5,7 @@ const app = require('../lib/app');
 const Dog = require('../lib/models/Dog');
 const { getAll } = require('../lib/models/Dog');
 const Song = require('../lib/models/Song');
+const Book = require('../lib/models/Book');
 
 describe('backend-hand-of-resources routes', () => {
   beforeEach(() => {
@@ -183,4 +184,12 @@ it('creates an instance of book to books table', async() => {
     id: expect.any(String),
     ...expected
   });
+});
+
+it('returns an array of books', async() => {
+  const expected = await Book.getAll();
+  const response = await request(app)
+    .get('/api/v1/books');
+
+  expect(response.body).toEqual(expected);
 });
