@@ -270,7 +270,23 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
+  it('updates a movie by id', async() => {
+    const expected = {
+      id: expect.any(String),
+      title: 'The Godfather: Part II',
+      director: 'Francis Ford Coppola',
+      yearReleased: 1974
+    };
 
+    const response = await request(app)
+      .patch('/api/v1/movies/1')
+      .send({ 
+        title: 'The Godfather: Part II', 
+        yearReleased: 1974 
+      });
+
+    expect(response.body).toEqual(expected);
+  });
 
 
 });
