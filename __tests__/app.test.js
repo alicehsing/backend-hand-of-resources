@@ -354,6 +354,22 @@ describe('backend-hand-of-resources routes', () => {
 
     expect(response.body).toEqual(expected);
   });
+
+
+  it('deletes a candy by id', async() => {
+    const newCandy = await Candy.insert({
+      name: 'Skittles',
+      type: 'hard sugar shells',
+      texture: 'hard and chewy',
+      sugarLevel: 3
+    });
+
+    const expected = await Candy.getById(newCandy.id);
+    const response = await request(app)
+      .delete(`/api/v1/candies/${expected.id}`);
+    
+    expect(response.body).toEqual(expected);
+  });
 });
 
 
