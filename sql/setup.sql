@@ -58,3 +58,18 @@ INSERT INTO
 VALUES
     ('The Godfather', 'Francis Ford Coppola', 1972),
     ('The Skeleton Key', 'Iain Softley', 2005);
+    
+
+CREATE TABLE candies (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    type TEXT NOT NULL,
+    texture TEXT NOT NULL,
+    sugar_level INT NOT NULL
+);
+
+INSERT INTO
+    candies (name, type, texture, sugar_level)
+VALUES
+    ('Gummy Bears', 'gummies', 'chewy', 3),
+    ('Kit-Kat', 'chocolate', 'hard', 4);
