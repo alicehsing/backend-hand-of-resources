@@ -6,6 +6,7 @@ const Dog = require('../lib/models/Dog');
 const { getAll } = require('../lib/models/Dog');
 const Song = require('../lib/models/Song');
 const Book = require('../lib/models/Book');
+const res = require('express/lib/response');
 
 describe('backend-hand-of-resources routes', () => {
   beforeEach(() => {
@@ -214,6 +215,19 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
+  it('deletes a book by id', async() => {
+    const newBook = await Book.insert({
+      title: 'Eat, Pray, Love',
+      author: 'Elizabeth Gilbert',
+      publisher: 'Riverhead Books'
+    });
+
+    const expected = await Book.getById(newBook.id);
+    const response = await request(app)
+      .delete(`/api/v1/books/${expected.id}`);
+    
+    expect(response.body).toEqual(expected);
+  });
 
 
 
