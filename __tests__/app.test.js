@@ -3,11 +3,12 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const Dog = require('../lib/models/Dog');
-const { getAll } = require('../lib/models/Dog');
+// const { getAll } = require('../lib/models/Dog');
 const Song = require('../lib/models/Song');
 const Book = require('../lib/models/Book');
 const Movie = require('../lib/models/Movie');
-const res = require('express/lib/response');
+const Candy = require('../lib/models/Candy');
+// const res = require('express/lib/response');
 
 describe('backend-hand-of-resources routes', () => {
   beforeEach(() => {
