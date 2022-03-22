@@ -262,6 +262,17 @@ describe('backend-hand-of-resources routes', () => {
     expect(response.body).toEqual(expected);
   });
 
+  it('returns a single movie by Id', async() => {
+    const expected = await Movie.getById(1);
+    const response = await request(app)
+      .get(`/api/v1/movies/${expected.id}`);
+
+    expect(response.body).toEqual(expected);
+  });
+
+
+
+
 });
 
 
